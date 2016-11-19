@@ -30,7 +30,7 @@ mapElement.addEventListener("drop", function(e) {
 
   var request = $.ajax({
     url: SERVICE,
-    jsonp: true,
+    dataType: "jsonp",
     data: {
       name: "Thomas Wilburn",
       method: "setPin",
