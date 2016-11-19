@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <%= t.include("partials/_head.html") %>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+
+    <responsive-child>
+      <main class="interactive">
+        <div class="map-container">
+          <div class="aspect-inner">
+            <leaflet-map>
+              <tile-layer layer="cartoPositron"></tile-layer>
+            </leaflet-map>
+          </div>
+          <div class="drag-launchpad">
+            <div class="drag-label">
+              Drag the pin to your location:
+              <img class="pin" draggable="true" src="./assets/ic_place_black_48px.svg">
+            </div>
+            <button class="find-me">
+              <img src="./assets/ic_near_me_black_48px.svg">
+              Get my location
+            </button>
+          </div>
+        </div>
+      </main>
+    </responsive-child>
+
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_foot.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>

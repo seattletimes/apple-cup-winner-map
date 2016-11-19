@@ -1,0 +1,49 @@
+@import "seattletimes";
+
+.map-container {
+  position: relative;
+
+  &::before {
+    display: block;
+    content: "";
+    padding-bottom: 60%;
+  }
+
+  leaflet-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .drag-launchpad {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: white;
+    box-shadow: 0 4px 8px fade(black, 20%);
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 15px;
+
+    .pin {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .find-me {
+      border-radius: 4px;
+      background: white;
+      border: 1px solid @df-light-gray;
+      padding: 4px;
+      cursor: pointer;
+
+      img {
+        height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+}
