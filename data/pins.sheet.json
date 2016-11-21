@@ -1,0 +1,208 @@
+[
+  {
+    "timestamp": 1479761565820,
+    "lat": 47.6190566,
+    "lng": "-122.3367128",
+    "team": "UW",
+    "name": "Thomas",
+    "player": "Xyz",
+    "fan_years": 20,
+    "story": "I love football.\n",
+    "approved": "x"
+  },
+  {
+    "lat": 47.5177662,
+    "lng": "-122.9734883",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 4,
+    "approved": "x",
+    "featured": "x"
+  },
+  {
+    "lat": 47.82921864,
+    "lng": "-122.9696553",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 2,
+    "approved": "x"
+  },
+  {
+    "lat": 47.65088445,
+    "lng": "-122.3877524",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 3,
+    "approved": "x"
+  },
+  {
+    "lat": 47.18558186,
+    "lng": "-122.5502207",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 8,
+    "approved": "x"
+  },
+  {
+    "lat": 47.54855405,
+    "lng": "-122.7171712",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 19,
+    "approved": "x"
+  },
+  {
+    "lat": 47.10798494,
+    "lng": "-122.5125443",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 12,
+    "approved": "x"
+  },
+  {
+    "lat": 47.2305637,
+    "lng": "-122.8013004",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 11,
+    "approved": "x"
+  },
+  {
+    "lat": 47.86917484,
+    "lng": "-122.707954",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 11,
+    "approved": "x"
+  },
+  {
+    "lat": 47.81846676,
+    "lng": "-122.6460439",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 15,
+    "approved": "x"
+  },
+  {
+    "lat": 47.66431068,
+    "lng": "-122.5348069",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 2,
+    "approved": "x",
+    "featured": "x"
+  },
+  {
+    "lat": 47.18473476,
+    "lng": "-122.7420739",
+    "team": "WSU",
+    "name": "Test person",
+    "fan_years": 16,
+    "approved": "x",
+    "featured": "x"
+  },
+  {
+    "lat": 47.20815006,
+    "lng": "-122.7493487",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 11,
+    "approved": "x",
+    "featured": "x"
+  },
+  {
+    "lat": 47.20055988,
+    "lng": "-122.9836003",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 3,
+    "approved": "x",
+    "featured": "x"
+  },
+  {
+    "lat": 47.40355596,
+    "lng": "-122.2073502",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 4,
+    "approved": "x"
+  },
+  {
+    "lat": 47.46148744,
+    "lng": "-122.1703672",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 18,
+    "approved": "x"
+  },
+  {
+    "lat": 47.70708715,
+    "lng": "-122.8782881",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 5,
+    "approved": "x"
+  },
+  {
+    "lat": 47.6835358,
+    "lng": "-122.6607187",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 5,
+    "approved": "x"
+  },
+  {
+    "lat": 47.89653648,
+    "lng": "-122.6681717",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 1,
+    "approved": "x"
+  },
+  {
+    "lat": 47.05718757,
+    "lng": "-122.2972846",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 11,
+    "approved": "x",
+    "featured": "x"
+  },
+  {
+    "lat": 47.30563324,
+    "lng": "-122.2502041",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 14,
+    "approved": "x",
+    "featured": "x"
+  },
+  {
+    "lat": 47.72261298,
+    "lng": "-122.2492995",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 19,
+    "approved": "x",
+    "featured": "x"
+  },
+  {
+    "lat": 47.23272726,
+    "lng": "-122.2343024",
+    "team": "UW",
+    "name": "Test person",
+    "fan_years": 3,
+    "approved": "x",
+    "featured": "x"
+  },
+  {
+    "timestamp": 1479771289345,
+    "lat": 47.59708841,
+    "lng": "-122.1624756",
+    "team": "WSU",
+    "name": "Cougar fan #1",
+    "player": "fdsafds",
+    "fan_years": 1,
+    "story": "fdsfds"
+  }
+]

@@ -1,6 +1,10 @@
 @import "seattletimes";
 
-@team-primary: #808;
+@huskies-secondary: #4b2e83;
+@huskies-primary: #e8e3d3;
+
+@cougars-primary: #981e32;
+@cougars-secondary: #5e6a71;
 
 main.interactive {
   max-width: 630px;
@@ -45,22 +49,35 @@ main.interactive {
     padding: 8px;
     border-radius: 4px;
     font-size: 15px;
+    max-width: 200px;
+    line-height: 1;
 
     @media @mobile {
       position: static;
+      max-width: 100%;
+      box-shadow: none;
     }
 
     body:not([stage="map"]) & {
       display: none;
     }
 
+    .drag-label {
+      margin: 16px 0;
+    }
+
+    .pins {
+      text-align: center;
+    }
+
     .pin {
       display: inline-block;
       vertical-align: middle;
       transform-origin: 50% 50%;
-      float: right;
       cursor: -webkit-grab;
       cursor: grab;
+      width: 48px;
+      margin: 0 20px;
 
       &.grabbing {
         cursor: -webkit-grabbing;
@@ -75,6 +92,13 @@ main.interactive {
       padding: 4px;
       cursor: pointer;
       clear: both;
+      text-align: center;
+      width: 100%;
+      transition: all .2s linear;
+
+      &:hover, &:focus {
+        border-color: @df-blue;
+      }
 
       img {
         height: 16px;
@@ -89,7 +113,7 @@ main.interactive {
   display: none;
   background: white;
   width: 300px;
-  margin: 20px auto;
+  margin: 40% auto 10px;
   padding: 20px;
   box-shadow: 0 16px 16px fade(black, 20%);
   font-size: 15px;
@@ -129,7 +153,6 @@ main.interactive {
   label {
     font-size: 14px;
     display: block;
-    color: @df-middle-gray;
   }
 
   input {
@@ -139,7 +162,7 @@ main.interactive {
     margin-bottom: 16px;
 
     &:focus {
-      border-color: @team-primary;
+      border-color: @df-blue;
     }
   }
 
@@ -149,7 +172,7 @@ main.interactive {
     margin-bottom: 16px;
 
     &:focus {
-      border-color: @team-primary;
+      border-color: @df-blue;
     }
   }
 
@@ -161,22 +184,57 @@ main.interactive {
   button {
     .flex(0 0 45%);
     background: white;
-    border: 1px solid @df-middle-gray;
+    border: 1px solid @df-light-gray;
     cursor: pointer;
     transition: all .2s linear;
     padding: 8px;
 
     &:hover, &:focus {
-      background: @df-light-gray;
+      border-color: @df-blue;
+      background: @df-off-white;
+      color: @df-blue;
     }
+  }
 
-    &.submit-form {
-      border-color: @team-primary;
-      color: @team-primary;
-    }
+  .disclaimer {
+    line-height: 1;
+    color: @df-middle-gray;
+  }
+}
 
-    &.cancel-form {
-      color: @df-middle-gray;
-    }
+.leaflet-overlay-pane {
+  // z-index: 12;
+}
+
+.story-pin {
+  &.UW {
+    background: linear-gradient(@huskies-primary, darken(@huskies-primary, 5%));
+    border: 1.5px solid @huskies-secondary;
+    color: @huskies-secondary;
+  }
+
+  &.WSU {
+    background: linear-gradient(@cougars-primary, darken(@cougars-primary, 5%));
+    border: 1.5px solid @cougars-secondary;
+    color: white;
+  }
+
+  border-radius: 100%;
+  line-height: 1;
+  font-size: 12px;
+  text-align: center;
+}
+
+.story {
+  font-size: 16px;
+
+  h1 {
+    font-size: 16px;
+  }
+
+  .stats {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
   }
 }
