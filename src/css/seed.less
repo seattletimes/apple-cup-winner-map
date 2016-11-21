@@ -1,12 +1,26 @@
 @import "seattletimes";
 
+@team-primary: #808;
+
+main.interactive {
+  max-width: 630px;
+  overflow: hidden;
+  position: relative;
+}
+
 .map-container {
   position: relative;
+  width: 100%;
 
-  &::before {
+  [stage="show-form"] & {
+    position: absolute;
+    z-index: -1;
+  }
+
+  .aspect-inner {
     display: block;
-    content: "";
     padding-bottom: 60%;
+    position: relative;
 
     @media @mobile {
       padding-bottom: 100%;
@@ -31,10 +45,26 @@
     border-radius: 4px;
     font-size: 15px;
 
+    @media @mobile {
+      position: static;
+    }
+
+    [stage="completed-form"] & {
+      display: none;
+    }
+
     .pin {
       display: inline-block;
       vertical-align: middle;
       transform-origin: 50% 50%;
+      float: right;
+      cursor: -webkit-grab;
+      cursor: grab;
+
+      &.grabbing {
+        cursor: -webkit-grabbing;
+        cursor: grabbing;
+      }
     }
 
     .find-me {
@@ -43,12 +73,98 @@
       border: 1px solid @df-light-gray;
       padding: 4px;
       cursor: pointer;
+      clear: both;
 
       img {
         height: 16px;
         display: inline-block;
         vertical-align: middle;
       }
+    }
+  }
+}
+
+.form-container {
+  display: none;
+  background: white;
+  width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 16px 16px fade(black, 20%);
+  font-size: 15px;
+
+  [stage="show-form"] & {
+    display: block;
+    transition: all .3s ease-in-out;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-form & {
+    transform: translateY(100px);
+    opacity: .01;
+  }
+
+  [stage="submitting-form"] & {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    display: block;
+  }
+
+  label {
+    font-size: 14px;
+    display: block;
+    color: @df-middle-gray;
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid @df-light-gray;
+    margin-bottom: 16px;
+
+    &:focus {
+      border-color: @team-primary;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    border: 1px solid @df-light-gray;
+    margin-bottom: 16px;
+
+    &:focus {
+      border-color: @team-primary;
+    }
+  }
+
+  .buttons {
+    .display-flex();
+    .justify-content(space-between);
+  }
+
+  button {
+    .flex(0 0 45%);
+    background: white;
+    border: 1px solid @df-middle-gray;
+    cursor: pointer;
+    transition: all .2s linear;
+    padding: 8px;
+
+    &:hover, &:focus {
+      background: @df-light-gray;
+    }
+
+    &.submit-form {
+      border-color: @team-primary;
+      color: @team-primary;
+    }
+
+    &.cancel-form {
+      color: @df-middle-gray;
     }
   }
 }

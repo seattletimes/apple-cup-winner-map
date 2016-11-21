@@ -35,6 +35,8 @@ var startDrag = function(e) {
     height: bounds.height
   };
 
+  pin.classList.add("grabbing");
+
   ["touchmove", "mousemove"].forEach(event => document.body.addEventListener(event, dragMove));
   ["touchend", "mouseup"].forEach(event => document.body.addEventListener(event, stopDrag));
 };
@@ -51,6 +53,7 @@ var dragMove = function(e) {
 
 var stopDrag = function(e) {
 
+  pin.classList.remove("grabbing");
   pin.style.transform = "";
   ["touchmove", "mousemove"].forEach(event => document.body.removeEventListener(event, dragMove));
   ["touchend", "mouseup"].forEach(event => document.body.removeEventListener(event, stopDrag));
@@ -65,27 +68,51 @@ var placePin = function(coords) {
   here.addTo(map);
   map.setView(coords);
 
-  // var request = $.ajax({
-  //   url: SERVICE,
-  //   dataType: "jsonp",
-  //   data: {
-  //     name: "Thomas Wilburn",
-  //     method: "setPin",
-  //     lat: coords.lat,
-  //     lng: coords.lng
-  //   }
-  // });
+  document.body.setAttribute("stage", "show-form");
+  document.body.classList.add("animate-form");
+  var reflow = document.body.offsetWidth;
+  document.body.classList.remove("animate-form");
 
-  // request.then(function(data) {
-  //   console.log(data);
-  // });
 };
+
+document.querySelector("button.submit-form").addEventListener("click", function(e) {
+  e.preventDefault();
+  e.stopImmediatePropagation();
+
+  var form = document.querySelector(".form-container");
+
+  form.innerHTML = "Submitting your story...";
+
+  document.body.setAttribute("stage", "submitting-form");
+
+  var coords = here.getLatLng();
+
+  var request = $.ajax({
+    url: SERVICE,
+    dataType: "jsonp",
+    data: {
+      name: "Thomas Wilburn",
+      method: "setPin",
+      lat: coords.lat,
+      lng: coords.lng
+    }
+  });
+
+  request.then(function(data) {
+    form.innerHTML = "Complete!";
+    setTimeout(function() {
+      document.body.setAttribute("stage", "completed-form");
+    }, 5000);
+  });
+})
+
+document.querySelector("button.cancel-form").addEventListener("click", () => document.body.classList.remove("show-form"));
 
 ["touchstart", "mousedown"].forEach(event => pin.addEventListener(event, startDrag));
 
 document.querySelector(".find-me").addEventListener("click", function(e) {
   gps(function(err, coords) {
     if (err) return console.log(err);
-    placePin(coords);
+    placePin({ lat: coords[0], lng: coords[1] });
   });
 });
