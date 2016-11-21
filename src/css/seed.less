@@ -13,13 +13,14 @@ main.interactive {
   width: 100%;
 
   [stage="show-form"] & {
+    width: ~"calc(100% - 20px)";
     position: absolute;
     z-index: -1;
   }
 
   .aspect-inner {
     display: block;
-    padding-bottom: 60%;
+    padding-bottom: 80%;
     position: relative;
 
     @media @mobile {
@@ -49,7 +50,7 @@ main.interactive {
       position: static;
     }
 
-    [stage="completed-form"] & {
+    body:not([stage="map"]) & {
       display: none;
     }
 
@@ -95,9 +96,9 @@ main.interactive {
 
   [stage="show-form"] & {
     display: block;
-    transition: all .3s ease-in-out;
     opacity: 1;
     transform: none;
+    transition: all .3s ease-in-out;
   }
 
   .animate-form & {
@@ -112,6 +113,17 @@ main.interactive {
     transform: translateX(-50%);
     z-index: 999;
     display: block;
+  }
+
+  [stage="completed-form"] & {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-200px);
+    opacity: 0;
+    z-index: 999;
+    display: block;
+    transition: all .3s ease-in-out;
   }
 
   label {

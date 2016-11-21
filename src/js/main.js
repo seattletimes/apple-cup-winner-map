@@ -8,7 +8,7 @@ var $ = require("jquery");
 
 var gps = require("./lib/geolocation").gps;
 
-const SERVICE = "https://script.google.com/macros/s/AKfycbzF0qL4TjsFx_r1pRJ9A8oNUxaZvalWFCiIpfRrHgyeFxPmc_lX/exec";
+const url = "https://script.google.com/macros/s/AKfycbzF0qL4TjsFx_r1pRJ9A8oNUxaZvalWFCiIpfRrHgyeFxPmc_lX/exec";
 
 var mapElement = document.querySelector("leaflet-map");
 var map = mapElement.map;
@@ -68,6 +68,10 @@ var placePin = function(coords) {
   here.addTo(map);
   map.setView(coords);
 
+  var main = document.querySelector("main.interactive");
+  var bounds = main.getBoundingClientRect();
+  main.style.minHeight = bounds.height + "px";
+
   document.body.setAttribute("stage", "show-form");
   document.body.classList.add("animate-form");
   var reflow = document.body.offsetWidth;
@@ -81,32 +85,35 @@ document.querySelector("button.submit-form").addEventListener("click", function(
 
   var form = document.querySelector(".form-container");
 
+  var inputs = form.querySelectorAll("input, textarea");
+  var data = {
+    method: "setPin"
+  };
+  inputs.forEach(el => data[el.id] = el.value || el.innerHTML);
+
   form.innerHTML = "Submitting your story...";
 
   document.body.setAttribute("stage", "submitting-form");
 
   var coords = here.getLatLng();
+  data.lat = coords.lat;
+  data.lng = coords.lng;
 
-  var request = $.ajax({
-    url: SERVICE,
-    dataType: "jsonp",
-    data: {
-      name: "Thomas Wilburn",
-      method: "setPin",
-      lat: coords.lat,
-      lng: coords.lng
-    }
-  });
+  var request = $.ajax({ url, data, dataType: "jsonp" });
 
   request.then(function(data) {
     form.innerHTML = "Complete!";
     setTimeout(function() {
       document.body.setAttribute("stage", "completed-form");
-    }, 5000);
+    }, 3000);
   });
 })
 
-document.querySelector("button.cancel-form").addEventListener("click", () => document.body.classList.remove("show-form"));
+var cancelButton = document.querySelector("button.cancel-form");
+cancelButton.addEventListener("click", function(e) {
+  e.preventDefault();
+  document.body.setAttribute("stage", "map");
+});
 
 ["touchstart", "mousedown"].forEach(event => pin.addEventListener(event, startDrag));
 
@@ -116,3 +123,6 @@ document.querySelector(".find-me").addEventListener("click", function(e) {
     placePin({ lat: coords[0], lng: coords[1] });
   });
 });
+
+var waBounds = [[49.155, -125.06], [45.55, -116.45]];
+map.fitBounds(waBounds);
