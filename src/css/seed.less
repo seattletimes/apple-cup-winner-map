@@ -7,6 +7,10 @@
     display: block;
     content: "";
     padding-bottom: 60%;
+
+    @media @mobile {
+      padding-bottom: 100%;
+    }
   }
 
   leaflet-map {
@@ -30,6 +34,7 @@
     .pin {
       display: inline-block;
       vertical-align: middle;
+      transform-origin: 50% 50%;
     }
 
     .find-me {
