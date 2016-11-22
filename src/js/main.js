@@ -36,6 +36,8 @@ var cancel = e => {
 $pins.on("dragstart", cancel);
 
 var startDrag = function(e) {
+  e.preventDefault();
+  e.stopPropagation();
   var pin = e.target;
   var bounds = pin.getBoundingClientRect();
   dragState = {
@@ -53,6 +55,8 @@ var startDrag = function(e) {
 };
 
 var dragMove = function(e) {
+  e.preventDefault();
+  e.stopPropagation();
   var isTouch = !!e.changedTouches;
 
   var x = isTouch ? e.changedTouches[0].clientX : e.clientX;
