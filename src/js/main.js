@@ -158,7 +158,7 @@ window.pins.forEach(function(row) {
   var size = 14;
   var marker = L.marker([row.lat, row.lng], {
     icon: L.divIcon({
-      className: "story-pin " + row.team,
+      className: "story-pin " + row.team + (row.featured ? " featured" : ""),
       iconSize: [size, size],
       html: row.featured ? "&bigstar;" : ""
     }),

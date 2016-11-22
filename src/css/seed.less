@@ -207,6 +207,12 @@ main.interactive {
 }
 
 .story-pin {
+  border-radius: 100%;
+  line-height: 1;
+  font-size: 12px;
+  text-align: center;
+  opacity: .7;
+
   &.UW {
     background: linear-gradient(@huskies-primary, darken(@huskies-primary, 5%));
     border: 1.5px solid @huskies-secondary;
@@ -219,10 +225,9 @@ main.interactive {
     color: white;
   }
 
-  border-radius: 100%;
-  line-height: 1;
-  font-size: 12px;
-  text-align: center;
+  &.featured {
+    opacity: 1;
+  }
 }
 
 .story {
