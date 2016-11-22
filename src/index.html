@@ -8,6 +8,10 @@
 
     <responsive-child>
       <main class="interactive">
+        <p class="chatter">
+          A state divided? Are you a die-hard Husky fan living in Cougar country? Maybe you’re a crimson-clad Coug in Seattle. We want to know where UW and WSU fans are cheering their teams. Use this interactive fan map to show your allegiance, and let us know your favorite all-time Cougar or Husky.
+        </p>
+
         <div class="map-container">
           <div class="aspect-inner">
             <leaflet-map>
@@ -66,7 +70,7 @@
     </responsive-child>
 
     <script>
-window.pins = <%= JSON.stringify(json.pins) %>;
+window.pins = <%= JSON.stringify(json.pins.filter(function(p) { return p.approved })) %>;
     </script>
 
     <script src="app.js" async></script>
