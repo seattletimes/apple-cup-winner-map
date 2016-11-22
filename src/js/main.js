@@ -71,6 +71,13 @@ var stopDrag = function(e) {
   ["touchmove", "mousemove"].forEach(event => document.body.removeEventListener(event, dragMove));
   ["touchend", "mouseup"].forEach(event => document.body.removeEventListener(event, stopDrag));
 
+  var bounds = mapElement.getBoundingClientRect();
+  var x = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+  var y = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+  if (x < bounds.left || x > bounds.left + bounds.width || y < bounds.top || y > bounds.top + bounds.height) {
+    return;
+  }
+
   var coords = e.changedTouches ? map.mouseEventToLatLng(e.changedTouches[0]) : map.mouseEventToLatLng(e);
   placePin(coords);
 
