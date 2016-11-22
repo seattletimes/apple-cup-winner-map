@@ -168,6 +168,7 @@ window.pins.forEach(function(row) {
   marker.addTo(map);
   marker.bindPopup(`
 <div class="story">
+  ${row.featured ? `<div class="badge">&bigstar; featured</div>` : ""}
   <h1>${row.name}</h1>
   <ul class="stats">
     <li> Favorite player: ${row.player || "nobody"}
