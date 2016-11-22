@@ -164,15 +164,15 @@ window.pins.forEach(function(row) {
     }),
     zIndexOffset: row.featured ? 1000 : 1
   });
-  row.fan_years = row.fan_years || 1;
+  row.fan_years = row.fan_years * 1 || 1;
   marker.addTo(map);
   marker.bindPopup(`
 <div class="story">
   ${row.featured ? `<div class="badge">&bigstar; featured</div>` : ""}
   <h1>${row.name}</h1>
   <ul class="stats">
-    <li> Favorite player: ${row.player || "nobody"}
-    <li> Fan for ${row.fan_years == 1 ? row.fan_years + " year" : row.fan_years + " year"}
+    <li> Favorite player: <b>${row.player || "not specified"}</b>
+    <li> Fan for: <b>${row.fan_years == 1 ? row.fan_years + " year" : row.fan_years + " years"}</b>
   </ul>
   <div class="story">
   ${row.story || ""}
