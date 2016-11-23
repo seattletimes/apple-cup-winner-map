@@ -4,6 +4,7 @@
 
 require("component-responsive-frame/child");
 require("component-leaflet-map");
+require("leaflet.markercluster");
 var $ = require("jquery");
 
 var $body = $(document.body);
@@ -15,6 +16,52 @@ const url = "https://script.google.com/macros/s/AKfycbzF0qL4TjsFx_r1pRJ9A8oNUxaZ
 var mapElement = document.querySelector("leaflet-map");
 var map = mapElement.map;
 var L = mapElement.leaflet;
+
+var clusterOptions = {
+  maxClusterRadius: 20,
+  showCoverageOnHover: false,
+  spiderfyOnMaxZoom: false
+};
+
+var combine = function(...sources) {
+  var o = {};
+  sources.forEach(function(s) {
+    for (var k in s) {
+      o[k] = s[k];
+    }
+  });
+  return o;
+};
+
+var clusterSize = 24;
+
+var uwOptions = combine(clusterOptions, {
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({
+      html: "",
+      className: "story-pin cluster UW",
+      iconSize: [clusterSize, clusterSize]
+    });
+  }
+});
+
+var wsuOptions = combine(clusterOptions, {
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({
+      html: "",
+      className: "story-pin cluster WSU",
+      iconSize: [clusterSize, clusterSize]
+    });
+  }
+});
+
+var featured = new L.featureGroup();
+var uwLayer = new L.MarkerClusterGroup(uwOptions);
+var wsuLayer = new L.MarkerClusterGroup(wsuOptions);
+
+uwLayer.addTo(map);
+wsuLayer.addTo(map);
+featured.addTo(map);
 
 var main = document.querySelector("main.interactive");
 var $pins = $(".pin");
@@ -169,7 +216,9 @@ window.pins.forEach(function(row) {
     zIndexOffset: row.featured ? 1000 : 1
   });
   row.fan_years = row.fan_years * 1 || 1;
-  marker.addTo(map);
+  if (row.featured) {
+    marker.addTo(featured);
+  } else marker.addTo(row.team == "UW" ? uwLayer : wsuLayer);
   marker.bindPopup(`
 <div class="story">
   ${row.featured ? `<div class="badge">&bigstar; featured</div>` : ""}
